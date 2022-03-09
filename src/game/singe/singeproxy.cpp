@@ -61,7 +61,8 @@ int                   g_fontCurrent         = -1;
 int                   g_fontQuality         =  1;
 double                g_sep_overlay_scale_x =  1;
 double                g_sep_overlay_scale_y =  1;
-bool				  g_pause_state		    = false; // by RDG2010
+bool                  g_pause_state         = false; // by RDG2010
+bool                  g_show_crosshair      = true;
 
 int (*g_original_prepare_frame)(struct yuv_buf *buf);
 
@@ -469,6 +470,7 @@ bool sep_srf32_to_srf8(SDL_Surface *src, SDL_Surface *dst)
 
 				// compute 8-bit index
 				Uint8 u8Idx = u8R | (u8G >> 3) | (u8B >> 5);
+				if (u8Idx > 0xFE) u8Idx--;
 
 				// if alpha channel is more opaque, then make it fully opaque
 				if (u8A > 0x7F)
@@ -569,6 +571,9 @@ void sep_startup(const char *script)
   lua_register(g_se_lua_context, "vldpGetPixel",       sep_mpeg_get_pixel);
   lua_register(g_se_lua_context, "vldpGetWidth",       sep_mpeg_get_width);
   lua_register(g_se_lua_context, "vldpSetVerbose",     sep_ldp_verbose);  
+
+  lua_register(g_se_lua_context, "singeWantsCrosshairs",   sep_singe_wants_crosshair);
+  lua_register(g_se_lua_context, "noCrosshair",            sep_no_crosshair);
 
   // by RDG2010
   lua_register(g_se_lua_context, "keyboardGetMode",    sep_keyboard_get_mode); 
@@ -750,6 +755,18 @@ static int sep_daphne_get_height(lua_State *L)
 static int sep_daphne_get_width(lua_State *L)
 {
   lua_pushnumber(L, g_pSingeIn->get_video_width());
+  return 1;
+}
+
+static int sep_singe_wants_crosshair(lua_State *L)
+{
+   lua_pushboolean(L, g_show_crosshair);
+   return 1;
+}
+
+static int sep_no_crosshair(lua_State *L)
+{
+  g_show_crosshair = false;
   return 1;
 }
 

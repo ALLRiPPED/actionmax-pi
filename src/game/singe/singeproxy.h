@@ -138,3 +138,6 @@ static int sep_skip_and_pause(lua_State *L);
 static int sep_pause_enable(lua_State *L);
 static int sep_pause_disable(lua_State *L);
 static int sep_mouse_set_mode(lua_State *L);
+
+static int sep_no_crosshair(lua_State *L);
+static int sep_singe_wants_crosshair(lua_State *L);

@@ -266,6 +266,8 @@ void singe::start()
 	g_pSingeOut->sep_set_static_pointers(&m_disc_fps, &m_uDiscFPKS);
 	g_pSingeOut->sep_startup(m_strGameScript.c_str());
 
+	if (notarget) g_pSingeOut->sep_call_lua("noCrosshair", "i", 1);
+
 	// if singe didn't get an error during startup...
 	if (!get_quitflag())
 	{
@@ -420,6 +422,11 @@ bool singe::handle_cmdline_arg(const char *s)
 
 		} else
 		    printerror("SINGE: js_range out of scope: <1-20>");
+	}
+
+	else if (strcasecmp(s, "-nocrosshair") == 0) {
+		notarget = true;
+		bResult = true;
 	}
 
 	return bResult;

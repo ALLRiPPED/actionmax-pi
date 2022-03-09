@@ -59,6 +59,7 @@ public:
 	bool handle_cmdline_arg(const char *arg);
 	void palette_calculate();
 	void video_repaint();
+	bool notarget = false;
 
 	// g_ldp function wrappers (to make function pointers out of them)
 	static void enable_audio1() { g_ldp->enable_audio1(); }

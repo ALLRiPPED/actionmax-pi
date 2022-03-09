@@ -8,7 +8,7 @@ _Hypseus_ can run _ActionMax_ games on most platforms, use _Hypseus_ when possib
 
 If **"_Targets Disabled_"** is displayed in _Hypseus Singe_, then try this emulator.
 
-This emulator uses _SDL1_ libraries and is based around the original Singe by Scott Duensing.
+This emulator uses _SDL1.2_ libraries and is based around the original Singe by Scott Duensing.
 
 It should be used as a ROM specific emulator for [ActionMax](https://en.wikipedia.org/wiki/Action_Max) games:
 
@@ -51,6 +51,7 @@ Below are extended arguments used in this emulator:
     -border <1-10>             [ Enable software border for lightguns          ]
     -js_range <1-20>           [ Adjust Singe joystick sensitivity: [def:5]    ]
     -manymouse                 [ Enable ABS mouse input [lightguns] [gungames] ]
+    -nocrosshair               [ Request game not to display crosshairs        ]
 
 
 ## -retropath rewrites
