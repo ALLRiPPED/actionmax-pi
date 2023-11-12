@@ -1,4 +1,8 @@
 # ActionMax for Pi
+---
+#### Following the release of Debian Bookworm, this emulator is now obsolete and will be archived.
+---
+#### Original Context follows:
 
 This is a companion emulator for [hypseus-singe](https://github.com/DirtBagXon/hypseus-singe). It allows certain generations of SBC's (_inc. Raspberry Pi_) to overcome display driver issues with _SDL2_ reading pixel data from the display. It is designed to run in a _libretro_ style environment as dictated by the `-retropath` argument in Hypseus Singe.
 
